@@ -1,0 +1,717 @@
+---
+---
+
+/* prettier-ignore */
+@use 'main
+{%- if jekyll.environment == 'production' -%}
+  .bundle
+{%- endif -%}
+';
+
+:root {
+  --hacker-accent: #b86cff;
+}
+
+@mixin hacker-dark-tokens {
+  --hacker-accent: #b86cff;
+
+  /* core surfaces */
+  --main-bg: #000;
+  --mask-bg: #101010;
+  --main-border-color: #171717;
+  --sidebar-bg: #050505;
+  --sidebar-border-color: #141414;
+  --card-bg: #090909;
+  --card-header-bg: #101010;
+  --topbar-bg: rgb(0 0 0 / 82%);
+  --button-bg: #0c0c0c;
+  --btn-border-color: #212121;
+  --btn-backtotop-border-color: #151515;
+  --sidebar-btn-bg: #0c0c0c;
+  --sidebar-hover-bg: #111;
+  --btn-paginator-hover-color: #101010;
+  --search-border-color: #202020;
+  --input-focus-border-color: #2e2e2e;
+
+  /* typography */
+  --text-color: #c8cbcc;
+  --text-muted-color: #80868b;
+  --text-muted-highlight-color: #aab1b5;
+  --heading-color: #eff2f3;
+  --label-color: #9ca3a8;
+  --blockquote-border-color: #342046;
+  --blockquote-text-color: #b7a7c9;
+  --link-color: var(--hacker-accent);
+  --link-underline-color: rgb(184 108 255 / 35%);
+  --toc-highlight: var(--hacker-accent);
+
+  /* cards / tags / tables */
+  --card-hover-bg: #0f0f0f;
+  --card-shadow: none;
+  --tag-hover: rgb(184 108 255 / 10%);
+  --tag-border: rgb(184 108 255 / 20%);
+  --tag-shadow: transparent;
+  --tb-odd-bg: #070707;
+  --tb-even-bg: #0d0d0d;
+  --tb-border-color: #171717;
+  --categories-border: rgb(255 255 255 / 8%);
+  --categories-hover-bg: #121212;
+  --categories-icon-hover-color: var(--hacker-accent);
+
+  /* code */
+  --highlight-bg-color: #040404;
+  --language-border-color: #1a1a1a;
+  --inline-code-bg: rgb(184 108 255 / 8%);
+  --code-color: #d6dbdd;
+  --code-header-text-color: #8a949b;
+  --code-header-muted-color: #1a1a1a;
+  --code-header-icon-color: #495057;
+  --highlighter-rouge-color: #b9dcca;
+  --highlight-lineno-color: #5d5d5d;
+  --kbd-wrap-color: #2b2b2b;
+  --kbd-text-color: #d5dadc;
+  --kbd-bg-color: #090909;
+
+  /* terminal palette (markdown code fences) */
+  --term-bg: #050309;
+  --term-bg-glow: rgb(184 108 255 / 5%);
+  --term-border: rgb(184 108 255 / 18%);
+  --term-header-bg: #0a0711;
+  --term-header-text: #cdb7e8;
+  --term-prompt: #b86cff;
+  --term-command: #ece7f4;
+  --term-flag: #7fd6ff;
+  --term-string: #d7a6ff;
+  --term-var: #ffcf8b;
+  --term-comment: #7e708f;
+  --term-output: #aeb4bc;
+  --term-error: #ff6b93;
+
+  /* generic code syntax palette (common languages) */
+  --syn-keyword: #c792ff;
+  --syn-keyword-2: #ff7edb;
+  --syn-type: #82d9ff;
+  --syn-func: #8df7c1;
+  --syn-class: #ffd580;
+  --syn-string: #d7a6ff;
+  --syn-number: #ffb86b;
+  --syn-constant: #7fd6ff;
+  --syn-var: #f5a0ff;
+  --syn-operator: #c6ccd2;
+  --syn-comment: #7f758d;
+  --syn-regex: #ff9fc7;
+  --syn-tag: #ff8fb7;
+  --syn-attr: #b2e06f;
+  --syn-builtin: #9fd0ff;
+  --syn-error: #ff6b93;
+
+  /* misc */
+  --avatar-border-color: rgb(184 108 255 / 35%);
+  --timeline-node-bg: rgb(184 108 255 / 70%);
+  --timeline-color: rgb(184 108 255 / 18%);
+}
+
+@mixin hacker-dark-ui {
+  color-scheme: dark;
+
+  body {
+    background-color: var(--main-bg);
+    background-image:
+      linear-gradient(rgb(184 108 255 / 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgb(184 108 255 / 0.03) 1px, transparent 1px);
+    background-size: 28px 28px;
+    letter-spacing: 0.01em;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  #topbar-title,
+  #topbar,
+  #sidebar .site-title,
+  #sidebar ul li.nav-item a.nav-link span,
+  .pagination,
+  .post-tag,
+  .tag,
+  .code-header,
+  kbd {
+    font-family:
+      "JetBrains Mono", "IBM Plex Mono", "SFMono-Regular", Menlo, Monaco,
+      Consolas, "Liberation Mono", "Courier New", monospace;
+  }
+
+  h1,
+  h2,
+  h3 {
+    letter-spacing: 0.02em;
+  }
+
+  .content {
+    h2,
+    h3 {
+      position: relative;
+    }
+
+    h2::before,
+    h3::before {
+      content: "#";
+      color: var(--hacker-accent);
+      opacity: 0.85;
+      margin-right: 0.5rem;
+      font-weight: 500;
+    }
+
+    blockquote {
+      border-left-width: 2px;
+      background: rgb(184 108 255 / 3%);
+      border-radius: 0;
+      padding: 0.9rem 1rem;
+    }
+
+    hr {
+      border-top: 1px dashed var(--main-border-color);
+      opacity: 0.8;
+    }
+
+    a:not(.img-link) {
+      text-decoration-thickness: 1px;
+      text-underline-offset: 0.2em;
+      transition: color 0.18s ease, text-decoration-color 0.18s ease;
+
+      &:hover {
+        color: #e1c3ff;
+        text-decoration-color: var(--hacker-accent);
+      }
+    }
+
+    img:not(.emoji) {
+      border: 1px solid var(--main-border-color);
+      border-radius: 0.35rem;
+    }
+  }
+
+  .card,
+  .post-preview,
+  .categories.card,
+  .list-group-item,
+  div[class^='language-'],
+  .highlight {
+    border-radius: 0.4rem !important;
+    box-shadow: none !important;
+    border: 1px solid var(--main-border-color);
+  }
+
+  .post-preview {
+    background: rgb(9 9 9 / 88%);
+    backdrop-filter: blur(2px);
+
+    &::before {
+      background:
+        linear-gradient(
+          90deg,
+          rgb(184 108 255 / 0.05),
+          rgb(184 108 255 / 0)
+        ) !important;
+    }
+  }
+
+  #post-list .card {
+    .card-body {
+      .card-title {
+        letter-spacing: 0.01em;
+      }
+    }
+  }
+
+  #post-list .card-wrapper:hover .post-preview {
+    border-color: rgb(184 108 255 / 32%);
+  }
+
+  .post-meta,
+  .card .card-text.content,
+  #breadcrumb {
+    letter-spacing: 0.01em;
+  }
+
+  .post-tag,
+  .tag {
+    border-radius: 0.3rem !important;
+    border-color: rgb(184 108 255 / 16%) !important;
+    box-shadow: none !important;
+    background: rgb(184 108 255 / 4%);
+    color: #a6b5ae !important;
+    padding: 0.1rem 0.45rem;
+    line-height: 1.45rem;
+
+    &::before {
+      content: "[";
+      opacity: 0.65;
+      margin-right: 0.1rem;
+    }
+
+    &::after {
+      content: "]";
+      opacity: 0.65;
+      margin-left: 0.1rem;
+    }
+  }
+
+  #sidebar {
+    border-right-color: var(--sidebar-border-color);
+    background:
+      linear-gradient(180deg, rgb(255 255 255 / 0.015), transparent 12rem),
+      var(--sidebar-bg);
+
+    #avatar {
+      box-shadow: rgb(184 108 255 / 22%) 0 0 0 2px !important;
+      filter: saturate(0.95) contrast(1.05);
+    }
+
+    ul li.nav-item {
+      a.nav-link {
+        border-radius: 0.4rem;
+        border: 1px solid transparent;
+        transition:
+          background-color 0.14s ease,
+          border-color 0.14s ease,
+          color 0.14s ease;
+      }
+
+      &:hover a.nav-link {
+        border-color: rgb(184 108 255 / 12%);
+      }
+
+      &.active a.nav-link {
+        border-color: rgb(184 108 255 / 20%);
+        box-shadow: inset 2px 0 0 var(--hacker-accent);
+      }
+    }
+
+    .sidebar-bottom {
+      a,
+      #mode-toggle {
+        border-radius: 0.35rem !important;
+        border: 1px solid rgb(184 108 255 / 10%);
+        box-shadow: none !important;
+      }
+    }
+  }
+
+  #topbar-wrapper {
+    background-color: var(--topbar-bg);
+    border-bottom: 1px solid rgb(184 108 255 / 10%);
+    backdrop-filter: blur(10px);
+  }
+
+  #topbar-title {
+    letter-spacing: 0.03em;
+    text-transform: lowercase;
+  }
+
+  #search-input {
+    border-radius: 0.35rem;
+  }
+
+  #search-results > article,
+  #search-hints > section {
+    border-bottom-color: var(--main-border-color);
+  }
+
+  #toc-wrapper {
+    ul .toc-link {
+      border-left: 1px solid transparent;
+      padding-left: 1rem;
+      transition:
+        color 0.14s ease,
+        border-color 0.14s ease,
+        background-color 0.14s ease;
+
+      &:hover {
+        border-left-color: rgb(184 108 255 / 28%);
+        background: rgb(184 108 255 / 4%);
+      }
+    }
+
+    ul .is-active-link {
+      border-left-color: var(--hacker-accent);
+      background: rgb(184 108 255 / 6%);
+    }
+  }
+
+  #toc-bar,
+  #toc-solo-trigger {
+    border-radius: 0.35rem;
+  }
+
+  div[class^='language-'] {
+    border-radius: 0.5rem !important;
+    box-shadow: none !important;
+  }
+
+  .code-header {
+    border-bottom: 1px solid var(--main-border-color);
+    margin: 0;
+    padding: 0 0.6rem 0 0.25rem;
+
+    button {
+      border-color: rgb(184 108 255 / 14%) !important;
+      color: var(--hacker-accent);
+
+      &:hover {
+        background: rgb(184 108 255 / 8%) !important;
+      }
+    }
+  }
+
+  .highlight {
+    padding-bottom: 0.35rem;
+  }
+
+  /* Terminal-like markdown blocks: ```bash, ```shell, ```zsh, ```terminal, ```console */
+  .language-bash,
+  .language-shell,
+  .language-zsh,
+  .language-sh,
+  .language-console,
+  .language-terminal,
+  .language-plaintext {
+    border-color: var(--term-border) !important;
+    background:
+      linear-gradient(180deg, var(--term-bg-glow), transparent 38%),
+      var(--term-bg) !important;
+
+    .code-header {
+      background: var(--term-header-bg);
+      border-bottom-color: rgb(184 108 255 / 12%);
+
+      span::after {
+        color: var(--term-header-text);
+        letter-spacing: 0.03em;
+      }
+
+      &::before {
+        box-shadow:
+          10px 0 0 rgb(127 214 255 / 55%),
+          20px 0 0 rgb(255 107 147 / 55%);
+        background-color: rgb(184 108 255 / 65%);
+      }
+    }
+
+    .highlight {
+      background: transparent;
+      border: 0;
+    }
+
+    pre {
+      color: var(--term-output);
+    }
+
+    /* shell/terminal token palette (Rouge) */
+    .gp {
+      color: var(--term-prompt) !important;
+      font-weight: 600;
+    }
+
+    .nb,
+    .nf {
+      color: var(--term-command) !important;
+    }
+
+    .nt,
+    .na {
+      color: var(--term-flag) !important;
+    }
+
+    .nv,
+    .vc,
+    .vg,
+    .vi {
+      color: var(--term-var) !important;
+    }
+
+    .s,
+    .s1,
+    .s2,
+    .sb,
+    .sh,
+    .sx {
+      color: var(--term-string) !important;
+    }
+
+    .c,
+    .c1,
+    .cm,
+    .cp {
+      color: var(--term-comment) !important;
+      font-style: italic;
+    }
+
+    .err,
+    .gr {
+      color: var(--term-error) !important;
+      background: transparent !important;
+    }
+
+    .go {
+      color: var(--term-output) !important;
+    }
+  }
+
+  .language-console,
+  .language-terminal {
+    .highlight pre {
+      line-height: 1.5rem;
+    }
+  }
+
+  /* Common language markdown blocks (Rouge) */
+  .language-python,
+  .language-py,
+  .language-java,
+  .language-javascript,
+  .language-js,
+  .language-typescript,
+  .language-ts,
+  .language-tsx,
+  .language-jsx,
+  .language-powershell,
+  .language-ps1,
+  .language-bash,
+  .language-shell,
+  .language-zsh,
+  .language-sh,
+  .language-ruby,
+  .language-go,
+  .language-rust,
+  .language-c,
+  .language-cpp,
+  .language-cxx,
+  .language-csharp,
+  .language-cs,
+  .language-php,
+  .language-kotlin,
+  .language-swift,
+  .language-scala,
+  .language-yaml,
+  .language-yml,
+  .language-json,
+  .language-toml,
+  .language-ini,
+  .language-sql,
+  .language-html,
+  .language-xml,
+  .language-css,
+  .language-scss,
+  .language-dockerfile {
+    .highlight {
+      background: transparent;
+    }
+
+    pre {
+      color: var(--code-color);
+    }
+
+    /* comments */
+    .c,
+    .c1,
+    .cm,
+    .cp,
+    .cs {
+      color: var(--syn-comment) !important;
+      font-style: italic;
+    }
+
+    /* keywords / control words */
+    .k,
+    .kc,
+    .kd,
+    .kn,
+    .kp,
+    .kr,
+    .kt,
+    .kv {
+      color: var(--syn-keyword) !important;
+    }
+
+    /* decorators / annotations / preprocessor-ish */
+    .nd,
+    .ne,
+    .cp,
+    .gh {
+      color: var(--syn-keyword-2) !important;
+    }
+
+    /* names / builtins */
+    .nb,
+    .bp {
+      color: var(--syn-builtin) !important;
+    }
+
+    /* classes / types / namespaces */
+    .nc,
+    .nn,
+    .nt,
+    .no {
+      color: var(--syn-class) !important;
+    }
+
+    .kt {
+      color: var(--syn-type) !important;
+    }
+
+    /* functions / methods */
+    .nf,
+    .fm {
+      color: var(--syn-func) !important;
+    }
+
+    /* variables / identifiers */
+    .nv,
+    .vc,
+    .vg,
+    .vi {
+      color: var(--syn-var) !important;
+    }
+
+    /* strings */
+    .s,
+    .sa,
+    .sb,
+    .sc,
+    .dl,
+    .sd,
+    .s1,
+    .s2,
+    .se,
+    .sh,
+    .si,
+    .sx,
+    .sr,
+    .ss {
+      color: var(--syn-string) !important;
+    }
+
+    /* numbers */
+    .m,
+    .mb,
+    .mf,
+    .mh,
+    .mi,
+    .il,
+    .mo {
+      color: var(--syn-number) !important;
+    }
+
+    /* constants / enums */
+    .na {
+      color: var(--syn-constant) !important;
+    }
+
+    /* operators / punctuation */
+    .o,
+    .ow,
+    .p,
+    .pi {
+      color: var(--syn-operator) !important;
+    }
+
+    /* regex / special strings */
+    .sr {
+      color: var(--syn-regex) !important;
+    }
+
+    /* HTML/XML-ish */
+    .nt {
+      color: var(--syn-tag) !important;
+    }
+
+    .na {
+      color: var(--syn-attr) !important;
+    }
+
+    /* error / invalid */
+    .err,
+    .gr {
+      color: var(--syn-error) !important;
+      background: transparent !important;
+    }
+  }
+
+  code.highlighter-rouge {
+    border-radius: 0.25rem;
+    border: 1px solid rgb(184 108 255 / 10%);
+  }
+
+  .pagination .page-item .page-link {
+    border-radius: 0.35rem;
+    border: 1px solid transparent;
+  }
+
+  .pagination .page-item.active .page-link,
+  .pagination .page-item .page-link:hover {
+    border-color: rgb(184 108 255 / 18%);
+    background: rgb(184 108 255 / 6%);
+  }
+
+  .post-navigation .btn {
+    border-radius: 0.45rem;
+    border-color: rgb(184 108 255 / 14%);
+    background: rgb(184 108 255 / 3%);
+
+    &:hover:not(.disabled) {
+      background: rgb(184 108 255 / 8%);
+    }
+  }
+
+  ::selection {
+    background: rgb(184 108 255 / 22%);
+    color: #f8fffb;
+  }
+
+  * {
+    scrollbar-color: rgb(184 108 255 / 22%) #050505;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #050505;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #241b2f;
+    border: 2px solid #050505;
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #36224c;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      transition: none !important;
+      animation: none !important;
+    }
+  }
+}
+
+/* Manual dark mode */
+html[data-mode='dark'] {
+  @include hacker-dark-tokens;
+  @include hacker-dark-ui;
+}
+
+/* System mode (when no explicit mode is selected) */
+@media (prefers-color-scheme: dark) {
+  html:not([data-mode]) {
+    @include hacker-dark-tokens;
+    @include hacker-dark-ui;
+  }
+}
