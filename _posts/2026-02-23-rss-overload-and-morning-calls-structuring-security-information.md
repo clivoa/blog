@@ -135,7 +135,7 @@ def build_user_prompt(context_snippet: str, hours: int, total_items: int) -> str
     )
 ```
 
-The structure enforces objectivity. Similar news items are grouped together. Excessive background is avoided. There is no room for long narratives. The focus is always: what does this mean for the SOC [today](https://clivoa.github.io/S33R/morning.html)?
+The structure enforces objectivity. Similar news items are grouped together. Excessive background is avoided. There is no room for long narratives. The focus is always: what does this mean for the SOC [today](https://clivoa.github.io/S33R/morning)?
 
 When relevant, recommendations may reference MITRE ATT&CK ([https://attack.mitre.org/](https://attack.mitre.org/)), particularly to support hunting activities or adjustments to existing detections. At the moment, the workflow is [limited to 3000 tokens](https://github.com/clivoa/S33R/blob/main/.github/workflows/morning_call.yml#L50).
 
