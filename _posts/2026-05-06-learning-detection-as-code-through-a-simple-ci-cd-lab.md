@@ -184,11 +184,11 @@ This is not meant to be a perfect production rule. It is a useful test object be
 The `status` field became especially useful:
 
 | Detection status | Splunk saved search state |
-|---|---|
-| `production` | enabled |
-| `draft` | disabled |
-| `testing` | disabled |
-| `deprecated` | disabled |
+| ---------------- | ------------------------- |
+| `production`     | enabled                   |
+| `draft`          | disabled                  |
+| `testing`        | disabled                  |
+| `deprecated`     | disabled                  |
 
 That lets me deploy something into Splunk without pretending it is already ready to alert in production.
 
