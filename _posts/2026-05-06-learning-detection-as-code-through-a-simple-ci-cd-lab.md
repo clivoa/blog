@@ -193,6 +193,10 @@ The `status` field became especially useful:
 
 That lets me deploy something into Splunk without pretending it is already ready to alert in production.
 
+There is an important design caveat here, though. In this first version, `status` lives inside the detection file and the deployment script uses it directly to decide whether the saved search should be enabled. That is simple and visible, but it also means promotion becomes a content change. If the SPL, schedule, tags, and metadata are already reviewed, changing only `status: testing` to `status: production` would still require the same detection to pass through the flow again just to flip that field.
+
+A more mature version could separate the detection definition from the effective deployment state. The YAML could still keep a lifecycle hint, but GitHub Actions could pass the environment status during deployment: `testing` for `dev`, `draft` for review or pre-production stages, and `production` only after the approved production path. That way, the same reviewed detection can move through environments without requiring a second rule change whose only purpose is changing a tag-like field.
+
 ---
 
 ## Schema Validation
@@ -370,6 +374,15 @@ def to_splunk_params(detection: dict) -> Dict[str, Any]:
     return params
 ```
 
+In hindsight, this is the exact place where the lab could evolve. Instead of reading only `detection["status"]`, the deploy step could receive an explicit deployment status from GitHub Actions:
+
+```python
+deploy_status = os.getenv("DEPLOY_STATUS", detection.get("status", "testing"))
+disabled = "0" if deploy_status == "production" else "1"
+```
+
+With that model, `dev` could deploy the saved search as disabled, while the production workflow could enable the same reviewed detection after the proper approval path. The repository history would then distinguish between changes to detection logic and changes to deployment state.
+
 And this is the end result in Splunk:
 
 ![Splunk saved search created by the pipeline after deployment](/assets/img/posts/DaC/splunk-deployed-rule.png)
@@ -405,7 +418,7 @@ The useful parts were not complicated:
 - Deployment became repeatable instead of a manual UI step.
 - `testing` and `production` status gave me a simple lifecycle control.
 
-The missing parts are also clear. A more mature version could add sample datasets, expected-result tests, better ATT&CK coverage reporting, Sigma compatibility, documentation generation, and environment approvals before production deployment.
+The missing parts are also clear. A more mature version could add sample datasets, expected-result tests, better ATT&CK coverage reporting, Sigma compatibility, documentation generation, environment approvals before production deployment, and a cleaner separation between detection lifecycle metadata and environment-driven deployment status.
 
 But for a first lab, this was enough. I did not need to build the perfect Detection as Code platform. I needed to build a small version that made the workflow visible.
 
