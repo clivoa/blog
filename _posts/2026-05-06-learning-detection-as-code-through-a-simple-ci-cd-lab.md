@@ -15,8 +15,9 @@ Detection as Code was one of those topics. I had read about the idea before, and
 
 Before going into the lab, I will avoid trying to write a deep definition of Detection as Code here. These references already do a much better job, and each one points to broader material around the topic:
 
+- [Series: Detection Engineering: Practicing Detection-as-Code](https://blog.nviso.eu/series/detection-engineering-practicing-detection-as-code/)
 - [Splunk - What Is Detection as Code?](https://www.splunk.com/en_us/blog/learn/detection-as-code.html)
-- [Panther - Detection-as-Code](https://panther.com/product/detection-as-code/)
+- [Panther - How to Create a Code-Based Detection](https://panther.com/blog/how-to-create-a-code-based-detection)
 - [Panther Docs - Detections](https://docs.panther.com/detections)
 - [Elastic - detection-rules repository](https://github.com/elastic/detection-rules)
 - [Elastic - The Engineer's Guide to Elastic Detections as Code](https://www.elastic.co/security-labs/detection-as-code-timeline-and-new-features)
