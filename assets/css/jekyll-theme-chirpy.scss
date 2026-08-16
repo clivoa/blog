@@ -703,14 +703,15 @@
 }
 
 /* Manual dark mode */
-html[data-mode='dark'] {
+html[data-mode='dark'],
+:root[data-bs-theme='dark'] {
   @include hacker-dark-tokens;
   @include hacker-dark-ui;
 }
 
 /* System mode (when no explicit mode is selected) */
 @media (prefers-color-scheme: dark) {
-  html:not([data-mode]) {
+  html:not([data-mode]):not([data-bs-theme]) {
     @include hacker-dark-tokens;
     @include hacker-dark-ui;
   }
