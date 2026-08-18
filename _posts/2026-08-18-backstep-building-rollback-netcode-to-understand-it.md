@@ -22,7 +22,7 @@ Before the lab, some references. These are much better introductions to the conc
 - [Rollback Netcode: Quick Basic Concepts for Beginners](https://youtu.be/883pxh7UMK0)
 - [Talking Rollback Netcode With Adam "Keits" Heart](https://youtu.be/1RI5scXYhK0) - a developer's perspective, longer and worth it
 - [Como funciona o ROLLBACK NETCODE?! O Netcode presente em Guilty Gear Strive](https://youtu.be/gcFfQd859Cg) - in Portuguese
-- [O QUE É ROLLBACK NETCODE? (react a @AstroJogos) | Tecnologia e Classe](https://youtu.be/_1mQfOO9B48) - also in Portuguese
+- [O QUE É ROLLBACK NETCODE? (react a @AstroJogos) Tecnologia e Classe](https://youtu.be/_1mQfOO9B48) - also in Portuguese
 
 The project is here:
 
