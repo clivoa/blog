@@ -8,7 +8,7 @@ image: /assets/img/posts/threat_hunting_notes.png
 tags: [threat-hunting, detection-engineering, incident-response, threat-intelligence, mitre-attack]
 ---
 
-> This article reflects my experience across incident response, threat modeling, and threat hunting, together with notes from training, labs, and the references linked throughout the text. Parts of it had been sitting in my notes for some time, but I never really had the motivation to finish and publish it. That changed after a message from my mate [Roncari](https://github.com/GabrielRoncari), which encouraged me to revisit the material, refine my thoughts, and finally share it.
+> This article reflects my experience across incident response, threat modeling, and threat hunting, together with notes from training, labs, and the references linked throughout the text. Parts of it had been sitting in my notes for some time, but I never really had the motivation to finish and publish it. That changed after a message from my mate [Roncari](https://www.linkedin.com/in/gabriel-roncari/), which encouraged me to revisit the material, refine my thoughts, and finally share it.
 >
 > The views expressed here are my own and do not represent those of any employer or include proprietary detection content. The ATT&CK references were checked against version 20.0, released on October 13, 2026. ATT&CK evolves over time, so always consult the latest version before applying a technique, analytic, or relationship in a live hunt. ([MITRE ATT&CK Version History](https://attack.mitre.org/resources/versions/))
 
